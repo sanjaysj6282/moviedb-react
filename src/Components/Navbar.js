@@ -7,7 +7,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" to="#">
-            Navbar
+            Movie Recommender  
           </a>
           <button
             className="navbar-toggler"

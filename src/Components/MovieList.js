@@ -26,7 +26,7 @@ function MovieList() {
       <div className="row">
         {movies.map((movie) => {
           return (
-            <div className="col-md-4" key={movie.id}>
+            <div className="col-md-3" key={movie.id}>
               <MovieItem
                 title={movie.original_title}
                 desc={movie.overview.slice(0, 157)+"..."}

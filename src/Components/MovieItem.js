@@ -6,9 +6,9 @@ function MovieItem(props) {
       <div class="card">
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
-          <h5 class="card-title">props.title</h5>
+          <h5 class="card-title">{props.title}</h5>
           <p class="card-text">
-            props.desc
+            {props.desc}
           </p>
           <a href="#" class="btn btn-primary">
             Go somewhere

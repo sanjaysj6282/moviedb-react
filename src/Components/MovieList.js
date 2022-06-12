@@ -11,20 +11,25 @@ function MovieList() {
     let parsedData = await response.json();
     setResult(parsedData.results);
 
-    console.log(result);
+    console.log(result[0].original_title);
   };
 
   useEffect(() => {
     moviesList();
-  
-  },);
-  
+  });
 
   return (
-    <div> 
-      {/* {result.map(movie =>{
-        // <MovieItem/>
-        })} */}
+    <div className="container my-3">
+      <h1>Movie Recommendations</h1>
+      <div className="row">
+        {result.map((movie) => {
+          return (
+            <div className="col-md-4" key={movie.results}>
+              <MovieItem title={movie.original_title} desc={movie.overview} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

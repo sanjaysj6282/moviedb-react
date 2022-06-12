@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import MovieItem from "./MovieItem";
 
 function MovieList() {
   const [result, setResult] = useState();
@@ -21,9 +22,9 @@ function MovieList() {
 
   return (
     <div> 
-      {result.map(movie =>{
-        
-        })}
+      {/* {result.map(movie =>{
+        // <MovieItem/>
+        })} */}
     </div>
   );
 }

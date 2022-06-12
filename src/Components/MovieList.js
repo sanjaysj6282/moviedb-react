@@ -12,7 +12,7 @@ function MovieList() {
     let parsedData = await response.json();
     setMovies(parsedData.results);
 
-    console.log(movies[0].original_title);
+    // console.log(movies[0].original_title);
   };
 
   useEffect(() => {

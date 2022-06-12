@@ -1,22 +1,31 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from "react";
 
 function MovieList() {
-    const [result, setResult] = useState([]);
-    const moviesList = async () =>{
-        let data=await fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en");
-        let parsedData=data.json;
-        setResult(parsedData.results);
+  const [result, setResult] = useState();
 
-        console.log(result);
-    }
+  const moviesList = async () => {
+    let response = await fetch(
+      "https://api.themoviedb.org/3/movie/top_rated?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en"
+    );
+    let parsedData = await response.json();
+    setResult(parsedData.results);
+
+    console.log(result);
+  };
+
+  useEffect(() => {
+    moviesList();
+  
+  },);
+  
 
   return (
-    <>
-        {result.map(movie =>{
-            
+    <div> 
+      {result.map(movie =>{
+        
         })}
-    </>
-  )
+    </div>
+  );
 }
 
-export default MovieList
+export default MovieList;

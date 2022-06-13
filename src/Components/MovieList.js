@@ -7,7 +7,7 @@ function MovieList() {
 
   const moviesList = async () => {
     let response = await fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en"
+      "https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
     );
     let parsedData = await response.json();
     setMovies(parsedData.results);

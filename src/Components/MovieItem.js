@@ -10,7 +10,7 @@ function MovieItem(props) {
           <p className="card-text">
             {props.desc}
           </p>
-          <a href="#" className="btn btn-dark">
+          <a href="#" target="__blank" className="btn btn-dark">
             Read more
           </a>
         </div>

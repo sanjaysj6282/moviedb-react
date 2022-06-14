@@ -23,7 +23,7 @@ function MovieList() {
 
   const handlenextClick = async () => {
     console.log("next click");
-    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page +1}&with_watch_monetization_types=flatrate`;
+    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${page +1}&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     setPage(page + 1);
     console.log(page);
@@ -34,7 +34,7 @@ function MovieList() {
 
   const handlepreviousClick = async () => {
     console.log("previous click");
-    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page -1}&with_watch_monetization_types=flatrate`;
+    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${page -1}&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     setPage(page - 1);
     console.log(page);
@@ -55,6 +55,8 @@ function MovieList() {
                 title={movie.original_title}
                 desc={movie.overview.slice(0, 157) + "..."}
                 img={imgInitial.concat("/", movie.poster_path)}
+                releasedate={movie.release_date}
+                popularity={movie.vote_average}
               />
             </div>
           );

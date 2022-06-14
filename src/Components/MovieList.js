@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import MovieItem from "./MovieItem";
 
-function MovieList() {
+function MovieList(props) {
   let imgInitial = "https://image.tmdb.org/t/p/w500";
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
   const moviesList = async () => {
     let apiUrl =
-      "https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
+      `https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     let parsedData = await response.json();
-    console.log(parsedData.page);
+    // console.log(parsedData.page);
     setMovies(parsedData.results);
 
     // console.log(movies[0].original_title);
@@ -22,24 +22,24 @@ function MovieList() {
   }, []);
 
   const handlenextClick = async () => {
-    console.log("next click");
-    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${page +1}&with_watch_monetization_types=flatrate`;
+    // console.log("next click");
+    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${page +1}&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     setPage(page + 1);
-    console.log(page);
+    // console.log(page);
     let parsedData = await response.json();
-    console.log(parsedData.page);
+    // console.log(parsedData.page);
     setMovies(parsedData.results);
   };
 
   const handlepreviousClick = async () => {
-    console.log("previous click");
+    // console.log("previous click");
     let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${page -1}&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     setPage(page - 1);
-    console.log(page);
+    // console.log(page);
     let parsedData = await response.json();
-    console.log(parsedData.page);
+    // console.log(parsedData.page);
     setMovies(parsedData.results);
   };
 

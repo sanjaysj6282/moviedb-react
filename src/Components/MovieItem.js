@@ -17,11 +17,6 @@ function MovieItem(props) {
               Release date: {props.releasedate}
             </small>
           </p>
-          <p className="card-text">
-            <small className="text-muted">
-              Release date: {props.id}
-            </small>
-          </p>
           <Link className="btn btn-dark" to={`/movie_details/${props.title}`} state={{ movieid : props.id }}>
             Read more
           </Link>

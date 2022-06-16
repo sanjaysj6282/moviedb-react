@@ -7,8 +7,7 @@ function MovieList(props) {
   const [page, setPage] = useState(1);
 
   const moviesList = async () => {
-    let apiUrl =
-      `https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
+    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     let parsedData = await response.json();
     // console.log(parsedData.page);
@@ -23,7 +22,11 @@ function MovieList(props) {
 
   const handlenextClick = async () => {
     // console.log("next click");
-    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${page +1}&with_watch_monetization_types=flatrate`;
+    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${
+      props.apiKey
+    }&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
+      page + 1
+    }&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     setPage(page + 1);
     // console.log(page);
@@ -34,7 +37,9 @@ function MovieList(props) {
 
   const handlepreviousClick = async () => {
     // console.log("previous click");
-    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${page -1}&with_watch_monetization_types=flatrate`;
+    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
+      page - 1
+    }&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     setPage(page - 1);
     // console.log(page);
@@ -52,6 +57,7 @@ function MovieList(props) {
           return (
             <div className="col-md-3 my-3" key={movie.id}>
               <MovieItem
+                id={movie.id}
                 title={movie.original_title}
                 desc={movie.overview.slice(0, 157) + "..."}
                 img={imgInitial.concat("/", movie.poster_path)}
@@ -67,10 +73,20 @@ function MovieList(props) {
         className="d-flex justify-content-between"
         style={{ margin: "50px" }}
       >
-        <button type="button" className="btn btn-dark"onClick={handlepreviousClick} disabled={page<2}>
+        <button
+          type="button"
+          className="btn btn-dark"
+          onClick={handlepreviousClick}
+          disabled={page < 2}
+        >
           Previous
         </button>
-        <button type="button" className="btn btn-dark" onClick={handlenextClick} disabled={page>5}>
+        <button
+          type="button"
+          className="btn btn-dark"
+          onClick={handlenextClick}
+          disabled={page > 5}
+        >
           Next
         </button>
       </div>

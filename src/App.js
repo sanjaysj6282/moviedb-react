@@ -13,7 +13,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<MovieList apiKey={APIKEY} />} />
-          <Route path="/movie_details" element={<MovieDetails />} />
+          <Route path="movie_details" element={<MovieDetails />} />
+          {/* <Route path="movie_details">
+            <Route path=":title" element={<MovieDetails />}/>
+          </Route> */}
         </Routes>
       </Router>
     </div>

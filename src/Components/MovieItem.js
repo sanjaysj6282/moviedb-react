@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 function MovieItem(props) {
   return (
     <div>
-      let movieid={props.id};
       <div className="card">
         <span className="position-absolute top-0 translate-middle badge rounded-pill bg-success" style={{left:"95%"}}>
           {props.popularity}
@@ -18,7 +17,12 @@ function MovieItem(props) {
               Release date: {props.releasedate}
             </small>
           </p>
-          <Link className="btn btn-dark" to={`/movie_details/${props.title}`} state={{ movieid : "1" }}>
+          <p className="card-text">
+            <small className="text-muted">
+              Release date: {props.id}
+            </small>
+          </p>
+          <Link className="btn btn-dark" to={`/movie_details`} state={{ movieid : props.id }}>
             Read more
           </Link>
         </div>

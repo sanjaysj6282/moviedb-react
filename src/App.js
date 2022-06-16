@@ -1,15 +1,21 @@
-import './App.css';
-import Navbar from './Components/Navbar';
-import MovieList from './Components/MovieList';
+import "./App.css";
+import Navbar from "./Components/Navbar";
+import MovieList from "./Components/MovieList";
+import MovieDetails from "./Components/MovieDetails";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  let APIKEY = process.env.REACT_APP_MOVIEDB_API_KEY
-  // console.log(APIKEY);
-  // let apiKey = "22a11be4d14b63a8250c0e0de6d489c4";
+  let APIKEY = process.env.REACT_APP_MOVIEDB_API_KEY;
+
   return (
     <div className="App">
-      <Navbar/>
-      <MovieList apiKey={APIKEY}/>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<MovieList apiKey={APIKEY} />} />
+          <Route path="/movie_details" element={<MovieDetails />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

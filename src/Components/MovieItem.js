@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 function MovieItem(props) {
   return (
@@ -16,9 +17,9 @@ function MovieItem(props) {
               Release date: {props.releasedate}
             </small>
           </p>
-          <a href="/" target="__blank" className="btn btn-dark">
+          <Link className="btn btn-dark" to={`/movie_details/${props.title}`}>
             Read more
-          </a>
+          </Link>
         </div>
       </div>
     </div>

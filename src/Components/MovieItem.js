@@ -22,7 +22,7 @@ function MovieItem(props) {
               Release date: {props.id}
             </small>
           </p>
-          <Link className="btn btn-dark" to={`/movie_details`} state={{ movieid : props.id }}>
+          <Link className="btn btn-dark" to={`/movie_details/${props.title}`} state={{ movieid : props.id }}>
             Read more
           </Link>
         </div>

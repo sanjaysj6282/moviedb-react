@@ -4,15 +4,15 @@ import { useLocation } from "react-router-dom";
 
 function MovieDetails(props) {
   const loc = useLocation();
-  const img=loc.state.imgposter;
-  const [moviedetails, setMoviedetails] = useState([]);
+  const img = loc.state.imgposter;
+  const [details, setDetails] = useState([]);
 
   const movieDetails = async () => {
     const apiUrl = `https://api.themoviedb.org/3/movie/${loc.state.movieid}?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US`;
     let response = await fetch(apiUrl);
     let parsedData = await response.json();
-    setMoviedetails(parsedData);
-    // console.log(loc.state.imgposter);
+    setDetails(parsedData);
+    // console.log(parsedData);
   };
 
   useEffect(() => {
@@ -33,28 +33,47 @@ function MovieDetails(props) {
         <div className="main area" style={{ color: "#FFFFFF" }}>
           <div
             className="d-flex justify-content-around"
-            style={{ margin: "40px" }}
+            style={{ margin: "35px" }}
           >
-            <h1>{moviedetails.original_title}</h1>
-            <div className="d-flex justify-content-between">
+            <h1>{details.original_title}</h1>
+            <div className="d-flex justify-content-between gap-4">
               <div className="rating">
                 <h5>IMDB rating</h5>
                 <span>
-                  <h5>{moviedetails.vote_average}</h5>
+                  <h5>{details.vote_average}</h5>
                 </span>
               </div>
               <div className="popularity">
                 <h5>Popularity</h5>
-                <h5>{moviedetails.popularity}</h5>
+                <h5>{details.popularity}</h5>
               </div>
             </div>
           </div>
-        </div>
-        <div className="main area" style={{ color: "#FFFFFF" }}>
-          <div className="d-flex justify-content-around">
-            <img src={img} width="270" height="380"className="img-thumbnail" alt="..." />
-            <div className="text">
-              Add title, overview, resize image and wrap properly
+          <div className="d-flex" style={{ margin: "0 13em 0 18%" }}>
+            <div className="p-2 w-100">
+              <img
+                src={img}
+                width="270"
+                height="380"
+                className="img-thumbnail"
+                alt="..."
+              />
+            </div>
+            <div className="p-4 flex-shrink-1">
+              {details.overview}
+              <br />
+              <br />
+              <div className="d-flex justify-content-center gap-2">
+                <span  type="badge rounded-pill text-bg-dark" className="btn btn-dark">
+                  ghfh;
+                </span>
+                <span  type="badge rounded-pill text-bg-dark" className="btn btn-dark">
+                  gfdfg
+                </span>
+                <span  type="badge rounded-pill text-bg-dark" className="btn btn-dark">
+                  hjhkgh
+                </span>
+              </div>
             </div>
           </div>
         </div>

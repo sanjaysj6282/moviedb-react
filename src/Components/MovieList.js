@@ -12,8 +12,6 @@ function MovieList(props) {
     let parsedData = await response.json();
     // console.log(parsedData.page);
     setMovies(parsedData.results);
-
-    // console.log(movies[0].original_title);
   };
 
   useEffect(() => {

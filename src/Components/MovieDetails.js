@@ -2,10 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-function MovieDetails() {
-  let imgInitial = "https://image.tmdb.org/t/p/w500";
-  let img;
+function MovieDetails(props) {
   const loc = useLocation();
+  const img=loc.state.imgposter;
   const [moviedetails, setMoviedetails] = useState([]);
 
   const movieDetails = async () => {
@@ -13,8 +12,7 @@ function MovieDetails() {
     let response = await fetch(apiUrl);
     let parsedData = await response.json();
     setMoviedetails(parsedData);
-    img = imgInitial.concat("/", parsedData.poster_path);
-    console.log({ img });
+    // console.log(loc.state.imgposter);
   };
 
   useEffect(() => {
@@ -28,7 +26,7 @@ function MovieDetails() {
         style={{
           position: "absolute",
           width: "100%",
-          height: "92%",
+          height: "91%",
           backgroundColor: "#202020",
         }}
       >
@@ -54,7 +52,7 @@ function MovieDetails() {
         </div>
         <div className="main area" style={{ color: "#FFFFFF" }}>
           <div className="d-flex justify-content-around">
-            <img src="https://image.tmdb.org/t/p/w500//6DrHO1jr3qVrViUO6s6kFiAGM7.jpg" class="img-thumbnail" alt="..." />
+            <img src={img} width="270" height="380"className="img-thumbnail" alt="..." />
             <div className="text">
               Add title, overview, resize image and wrap properly
             </div>

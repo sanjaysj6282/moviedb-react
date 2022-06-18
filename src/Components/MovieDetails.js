@@ -7,6 +7,7 @@ function MovieDetails(props) {
   const img = loc.state.imgposter;
   const [details, setDetails] = useState([]);
   const [genres, setGenres] = useState();
+  const [procompanies, setProcompanies] = useState();
 
   const movieDetails = async () => {
     const apiUrl = `https://api.themoviedb.org/3/movie/${loc.state.movieid}?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US`;
@@ -14,6 +15,7 @@ function MovieDetails(props) {
     let parsedData = await response.json();
     setDetails(parsedData);
     setGenres(parsedData.genres);
+    setProcompanies(parsedData.production_companies);
     // console.log(genres[1].name);
     console.log(genres);
   };
@@ -77,18 +79,29 @@ function MovieDetails(props) {
                     </span>
                   );
                 })}
-                {/* <span
-                  type="badge rounded-pill text-bg-dark"
-                  className="btn btn-dark"
-                >
-                  {genres[1].name}
-                </span>
-                <span
-                  type="badge rounded-pill text-bg-dark"
-                  className="btn btn-dark"
-                >
-                  {genres[2].name}
-                </span> */}
+              </div>
+              <br />
+              <br />
+              <div class="d-flex">
+                <div class="p-2 flex-fill">Homepage</div>
+                <div class="p-2 flex-fill">
+                  <a href={details.homepage} target="_blank">
+                    {details.homepage}
+                  </a>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="p-2 flex-fill">Production companies</div>
+                <div class="p-2 flex-fill gap-2">
+                  {procompanies?.map((company) => {
+                    return (
+                      <span type="badge rounded-pill text-bg-dark gap-4">
+                        {company.name}
+                        <br />
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>

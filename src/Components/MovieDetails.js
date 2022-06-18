@@ -64,7 +64,7 @@ function MovieDetails(props) {
                 alt="..."
               />
             </div>
-            <div className="p-4 flex-shrink-1">
+            <div className="p-4 flex-shrink-1 ">
               {details.overview}
               <br />
               <br />
@@ -82,7 +82,7 @@ function MovieDetails(props) {
               </div>
               <br />
               <br />
-              <div class="d-flex">
+              <div class="d-flex container">
                 <div class="p-2 flex-fill">Homepage</div>
                 <div class="p-2 flex-fill">
                   <a href={details.homepage} target="_blank" rel="noreferrer">
@@ -92,12 +92,11 @@ function MovieDetails(props) {
               </div>
               <div class="d-flex">
                 <div class="p-2 flex-fill">Production companies</div>
-                <div class="p-2 flex-fill gap-2">
+                <div class="p-2 flex-fill">
                   {procompanies?.map((company) => {
                     return (
                       <span type="badge rounded-pill text-bg-dark gap-4">
-                        {company.name}
-                        <br />
+                        {company.name.concat(", ")}
                       </span>
                     );
                   })}

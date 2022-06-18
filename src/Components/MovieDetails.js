@@ -31,14 +31,13 @@ function MovieDetails(props) {
         style={{
           position: "absolute",
           width: "100%",
-          height: "91%",
+          height: "100%",
           backgroundColor: "#202020",
         }}
       >
-        <div className="main area" style={{ color: "#FFFFFF" }}>
+        <div className="main area" style={{ color: "#FFFFFF", marginTop: "90px"  }} >
           <div
-            className="d-flex justify-content-around"
-            style={{ margin: "35px" }}
+            className="d-flex justify-content-around"  
           >
             <h1>{details.original_title}</h1>
             <div className="d-flex justify-content-between gap-4">
@@ -54,6 +53,7 @@ function MovieDetails(props) {
               </div>
             </div>
           </div>
+          <br />
           <div className="d-flex" style={{ margin: "0 13em 0 18%" }}>
             <div className="p-2 w-100">
               <img

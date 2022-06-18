@@ -7,7 +7,6 @@ function MovieDetails(props) {
   const img = loc.state.imgposter;
   const [details, setDetails] = useState([]);
   const [genres, setGenres] = useState();
-  let e1 = "ghj";
 
   const movieDetails = async () => {
     const apiUrl = `https://api.themoviedb.org/3/movie/${loc.state.movieid}?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US`;
@@ -16,7 +15,7 @@ function MovieDetails(props) {
     setDetails(parsedData);
     setGenres(parsedData.genres);
     // console.log(genres[1].name);
-    // console.log(parsedData);
+    console.log(genres);
   };
 
   useEffect(() => {
@@ -68,13 +67,17 @@ function MovieDetails(props) {
               <br />
               <br />
               <div className="d-flex justify-content-center gap-2">
-                <span
-                  type="badge rounded-pill text-bg-dark"
-                  className="btn btn-dark"
-                >
-                  {genres[0].name}
-                </span>
-                <span
+                {genres?.map((gen) => {
+                  return (
+                    <span
+                      type="badge rounded-pill text-bg-dark"
+                      className="btn btn-dark"
+                    >
+                      {gen.name}
+                    </span>
+                  );
+                })}
+                {/* <span
                   type="badge rounded-pill text-bg-dark"
                   className="btn btn-dark"
                 >
@@ -85,7 +88,7 @@ function MovieDetails(props) {
                   className="btn btn-dark"
                 >
                   {genres[2].name}
-                </span>
+                </span> */}
               </div>
             </div>
           </div>

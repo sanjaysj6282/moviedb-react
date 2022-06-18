@@ -85,7 +85,7 @@ function MovieDetails(props) {
               <div class="d-flex">
                 <div class="p-2 flex-fill">Homepage</div>
                 <div class="p-2 flex-fill">
-                  <a href={details.homepage} target="_blank">
+                  <a href={details.homepage} target="_blank" rel="noreferrer">
                     {details.homepage}
                   </a>
                 </div>

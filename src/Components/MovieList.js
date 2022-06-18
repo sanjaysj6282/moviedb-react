@@ -16,7 +16,7 @@ function MovieList(props) {
 
   useEffect(() => {
     moviesList();
-  }, []);
+  });
 
   const handlenextClick = async () => {
     // console.log("next click");

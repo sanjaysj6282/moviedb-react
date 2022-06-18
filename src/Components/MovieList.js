@@ -48,7 +48,7 @@ function MovieList(props) {
 
   return (
     <div className="container my-3">
-      <h1 style={{ margin: "25px" }}>Movie Recommendations</h1>
+      <h1 style={{ margin: "25px", marginTop:"85px" }}>Movie Recommendations</h1>
 
       <div className="row">
         {movies.map((movie) => {

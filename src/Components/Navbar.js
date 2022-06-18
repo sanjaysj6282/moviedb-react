@@ -12,8 +12,8 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
+      <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div className="container-fluid"  >
           <Link className="navbar-brand" to="/">
             Movie Recommender  
           </Link>

@@ -39,7 +39,7 @@ function MovieDetails(props) {
           <div
             className="d-flex justify-content-around"  
           >
-            <h1>{details.original_title}</h1>
+            <h1 style={{magrinTop: "20px"}}>{details.original_title}</h1>
             <div className="d-flex justify-content-between gap-4">
               <div className="rating">
                 <h5>IMDB rating</h5>

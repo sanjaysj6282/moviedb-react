@@ -8,8 +8,8 @@ function Navbar() {
   let location = useLocation();
   let navigate=useNavigate();
 
-  const [searchWord, setSearchWord] = useState('NULL');
-  const [type, setType] = useState('NULL');
+  const [searchWord, setSearchWord] = useState('');
+  const [type, setType] = useState('');
 
   const searchFn = (e) =>{
     e.preventDefault();

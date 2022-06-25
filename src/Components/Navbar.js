@@ -1,25 +1,29 @@
 import React from "react";
 import { useState } from "react";
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate } from "react-router-dom";
 
 function Navbar() {
   // tO get the curr location i.e, url
+  // Here its used only for highlighting Home, about
   let location = useLocation();
+  let navigate=useNavigate();
 
   const [searchWord, setSearchWord] = useState('NULL');
   const [type, setType] = useState('NULL');
 
   const searchFn = (e) =>{
     e.preventDefault();
-    
-    <Link to="/movie_details" />
+    // console.log(e);
+
+    navigate("/", {state: {type: type, query: searchWord}});
+    // navigate(-1);
   }
 
   const changeSearch = (e) =>{
-    setSearchWord(e.target.value);
+    setSearchWord(e);
     setType('Search');
-    console.log(searchWord);
-    console.log(type);
+    // console.log(searchWord);
+    // console.log(type);
   }
 
   return (
@@ -59,7 +63,7 @@ function Navbar() {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
-                onChange={changeSearch}
+                onChange={(e) => {changeSearch(e.target.value)}}
               />
               <button className="btn btn-outline-success" type="submit" >
                 Search

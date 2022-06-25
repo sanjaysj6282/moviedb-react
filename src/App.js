@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<MovieList apiKey={APIKEY} type="NULL" query="NULL" />} />
+          <Route exact path="/" element={<MovieList apiKey={APIKEY} />} />
           <Route exact path="about" element={<About/>} />
           <Route path="movie_details">
             {/* title is added as URL parameter to be passed as para by movieItem*/}

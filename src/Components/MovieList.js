@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import MovieItem from "./MovieItem";
 
 function MovieList(props) {
+  let location =useLocation();
+  console.log(location.state.type);
+
   let imgInitial = "https://image.tmdb.org/t/p/w500";
-  let iniUrl="https://api.themoviedb.org/3/discover/movie?api_key=";
+  let iniUrl="https://api.themoviedb.org/3";
+  let displayUrl=iniUrl+"/discover/movie?api_key=";
+  let searchURl=iniUrl+`/search/movie?api_key=${props.apiKey}4&language=en-US&query=dark&page=1&include_adult=false`;
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
+
   const moviesList = async () => {
-    let apiUrl = iniUrl+`${props.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
+    let apiUrl;
+    // if(location.state.type==='Search'){
+    //   apiUrl=searchURl;
+    // }
+    // else{
+      apiUrl=displayUrl+`${props.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
+    // }
     let response = await fetch(apiUrl);
     let parsedData = await response.json();
     // console.log(parsedData.page);

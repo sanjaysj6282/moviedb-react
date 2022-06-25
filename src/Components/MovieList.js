@@ -42,13 +42,11 @@ function MovieList(props) {
 
   const handlenextClick = async () => {
     // console.log("next click");
-    let apiUrl =
-      iniUrl +
-      `${
-        props.apiKey
-      }&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
-        page + 1
-      }&with_watch_monetization_types=flatrate`;
+    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${
+      props.apiKey
+    }&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
+      page + 1
+    }&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     setPage(page + 1);
     // console.log(page);
@@ -59,13 +57,9 @@ function MovieList(props) {
 
   const handlepreviousClick = async () => {
     // console.log("previous click");
-    let apiUrl =
-      iniUrl +
-      `${
-        props.apiKey
-      }&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
-        page - 1
-      }&with_watch_monetization_types=flatrate`;
+    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
+      page - 1
+    }&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     setPage(page - 1);
     // console.log(page);
@@ -97,7 +91,7 @@ function MovieList(props) {
             );
           })
         ) : (
-          <div className="container" style={{marginTop: "10%"}}>
+          <div className="container" style={{ marginTop: "10%" }}>
             <h2>No such movies</h2>
           </div>
         )}

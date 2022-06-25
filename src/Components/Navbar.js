@@ -1,10 +1,26 @@
 import React from "react";
-import { useEffect } from "react";
+import { useState } from "react";
 import {Link, useLocation} from "react-router-dom";
 
 function Navbar() {
   // tO get the curr location i.e, url
   let location = useLocation();
+
+  const [searchWord, setSearchWord] = useState('NULL');
+  const [type, setType] = useState('NULL');
+
+  const searchFn = (e) =>{
+    e.preventDefault();
+    
+    <Link to="/movie_details" />
+  }
+
+  const changeSearch = (e) =>{
+    setSearchWord(e.target.value);
+    setType('Search');
+    console.log(searchWord);
+    console.log(type);
+  }
 
   return (
     <div>
@@ -37,14 +53,15 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex" role="search">
+            <form className="d-flex" role="search"  onSubmit={searchFn}>
               <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={changeSearch}
               />
-              <button className="btn btn-outline-success" type="submit">
+              <button className="btn btn-outline-success" type="submit" >
                 Search
               </button>
             </form>

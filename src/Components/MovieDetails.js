@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 function MovieDetails(props) {
+  let APIKEY = process.env.REACT_APP_MOVIEDB_API_KEY;
   const loc = useLocation();
   const img = loc.state.imgposter;
   const [details, setDetails] = useState([]);
@@ -10,7 +11,7 @@ function MovieDetails(props) {
   const [procompanies, setProcompanies] = useState();
 
   const movieDetails = async () => {
-    const apiUrl = `https://api.themoviedb.org/3/movie/${loc.state.movieid}?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US`;
+    const apiUrl = `https://api.themoviedb.org/3/movie/${loc.state.movieid}?api_key=${APIKEY}&language=en-US`;
     let response = await fetch(apiUrl);
     let parsedData = await response.json();
     setDetails(parsedData);

@@ -3,11 +3,12 @@ import MovieItem from "./MovieItem";
 
 function MovieList(props) {
   let imgInitial = "https://image.tmdb.org/t/p/w500";
+  let iniUrl="https://api.themoviedb.org/3/discover/movie?api_key=";
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
   const moviesList = async () => {
-    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
+    let apiUrl = iniUrl+`${props.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     let parsedData = await response.json();
     // console.log(parsedData.page);
@@ -20,7 +21,7 @@ function MovieList(props) {
 
   const handlenextClick = async () => {
     // console.log("next click");
-    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${
+    let apiUrl = iniUrl+`${
       props.apiKey
     }&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
       page + 1
@@ -35,7 +36,7 @@ function MovieList(props) {
 
   const handlepreviousClick = async () => {
     // console.log("previous click");
-    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
+    let apiUrl = iniUrl+`${props.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
       page - 1
     }&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);

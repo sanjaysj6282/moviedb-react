@@ -2,9 +2,6 @@ import React from "react";
 import {Link} from 'react-router-dom';
 
 function MovieItem(props) {
-  // const print = () => {
-  //   console.log(props.img);
-  // }
   return (
     <div>
       <div className="card">

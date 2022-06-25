@@ -6,10 +6,6 @@ function Navbar() {
   // tO get the curr location i.e, url
   let location = useLocation();
 
-  // useEffect(() => {
-  //   console.log(location);
-  // }, [location]);
-
   return (
     <div>
       <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -40,38 +36,6 @@ function Navbar() {
                   About
                 </Link>
               </li>
-              {/* <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Sort by
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Popularity
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Rating
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here(Later to fill)
-                    </a>
-                  </li>
-                </ul>
-              </li> */}
             </ul>
             <form className="d-flex" role="search">
               <input

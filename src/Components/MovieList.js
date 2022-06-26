@@ -22,7 +22,7 @@ function MovieList(props) {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
+  const moviesList = async () => {
     let apiUrl;
     if (location.state) {
       if (location.state.type === "Search") {
@@ -47,8 +47,16 @@ function MovieList(props) {
       // On the json data we take articles object
       .then((parsedData) => setMovies(parsedData.results));
 
-    // console.log(movies);
-  });
+    // console.log(movies);l
+  };
+
+  useEffect(() => {
+    moviesList();
+
+    // VIMP --> to disable eslint 
+    // https://bobbyhadz.com/blog/react-hook-useeffect-has-missing-dependency
+    
+  }, [location.state, moviesList]);
 
   const handlenextClick = async () => {
     // console.log("next click");

@@ -52,11 +52,11 @@ function MovieList(props) {
 
   useEffect(() => {
     moviesList();
-
+    
     // VIMP --> to disable eslint 
     // https://bobbyhadz.com/blog/react-hook-useeffect-has-missing-dependency
-    
-  }, [location.state, moviesList]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.state]);
 
   const handlenextClick = async () => {
     // console.log("next click");

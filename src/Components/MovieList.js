@@ -16,7 +16,9 @@ function MovieList(props) {
     }}&page=1&include_adult=false`;
   let ratedUrl =
     iniUrl + `/movie/top_rated?api_key=${props.apiKey}&language=en-US&page=1`;
-  let favUrl = `https://api.themoviedb.org/3/account/12679122/favorite/movies?api_key=${props.apiKey}&session_id=${props.sessionId}&language=en-US&sort_by=created_at.asc&page=1`;
+  let favUrl =
+    iniUrl +
+    `/account/12679122/favorite/movies?api_key=${props.apiKey}&session_id=${props.sessionId}&language=en-US&sort_by=created_at.asc&page=1`;
   // console.log(props.sessionId);
 
   const [movies, setMovies] = useState([]);
@@ -52,19 +54,21 @@ function MovieList(props) {
 
   useEffect(() => {
     moviesList();
-    
-    // VIMP --> to disable eslint 
+
+    // VIMP --> to disable eslint
     // https://bobbyhadz.com/blog/react-hook-useeffect-has-missing-dependency
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.state]);
 
   const handlenextClick = async () => {
     // console.log("next click");
-    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${
-      props.apiKey
-    }&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
-      page + 1
-    }&with_watch_monetization_types=flatrate`;
+    let apiUrl =
+      displayUrl +
+      `${
+        props.apiKey
+      }&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
+        page + 1
+      }&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     setPage(page + 1);
     // console.log(page);
@@ -75,11 +79,13 @@ function MovieList(props) {
 
   const handlepreviousClick = async () => {
     // console.log("previous click");
-    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${
-      props.apiKey
-    }4&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
-      page - 1
-    }&with_watch_monetization_types=flatrate`;
+    let apiUrl =
+      displayUrl +
+      `${
+        props.apiKey
+      }&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
+        page - 1
+      }&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);
     setPage(page - 1);
     // console.log(page);

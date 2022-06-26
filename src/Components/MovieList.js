@@ -22,7 +22,7 @@ function MovieList(props) {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
-  const moviesList = async () => {
+  useEffect(() => {
     let apiUrl;
     if (location.state) {
       if (location.state.type === "Search") {
@@ -38,16 +38,17 @@ function MovieList(props) {
         `${props.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
     }
     // console.log("inside fn " + location.state);
-    let response = await fetch(apiUrl);
-    let parsedData = await response.json();
-    // console.log(parsedData.page);
-    setMovies(parsedData.results);
-    // console.log(movies);
-  };
 
-  useEffect(() => {
-    moviesList();
-  }, [location.state]);
+    // let response = await fetch(apiUrl);
+    // let parsedData = await response.json();
+    // setMovies(parsedData.results);
+    fetch(apiUrl)
+      .then((response) => response.json())
+      // On the json data we take articles object
+      .then((parsedData) => setMovies(parsedData.results));
+
+    // console.log(movies);
+  });
 
   const handlenextClick = async () => {
     // console.log("next click");

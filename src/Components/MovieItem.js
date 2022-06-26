@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 function MovieItem(props) {
   let defaultImg =
@@ -15,14 +15,14 @@ function MovieItem(props) {
         >
           {props.popularity}
         </span>
-        {props.img.substring(props.img.length - 4, props.img.length) !=
+        {props.img.substring(props.img.length - 4, props.img.length) !==
         "null" ? (
-          <img src={props.img} className="card-img-top" alt="Image not found" />
+          <img src={props.img} className="card-img-top" alt="Img not found" />
         ) : (
           <img
             src={defaultImg}
             className="card-img-top"
-            alt="Image not found"
+            alt="Img not found"
           />
         )}
         {/* {print()} */}
@@ -40,7 +40,7 @@ function MovieItem(props) {
             state={{
               movieid: props.id,
               imgposter:
-                props.img.substring(props.img.length - 4, props.img.length) !=
+                props.img.substring(props.img.length - 4, props.img.length) !==
                 "null"
                   ? props.img
                   : defaultImg,

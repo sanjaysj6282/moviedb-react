@@ -16,6 +16,9 @@ function MovieList(props) {
     }}&page=1&include_adult=false`;
   let ratedUrl =
     iniUrl + `/movie/top_rated?api_key=${props.apiKey}&language=en-US&page=1`;
+  let favUrl = `https://api.themoviedb.org/3/account/12679122/favorite/movies?api_key=${props.apiKey}&session_id=${props.sessionId}&language=en-US&sort_by=created_at.asc&page=1`;
+  // console.log(props.sessionId);
+
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -26,6 +29,8 @@ function MovieList(props) {
         apiUrl = searchURl;
       } else if (location.state.type === "Rated") {
         apiUrl = ratedUrl;
+      } else if (location.state.type === "Favorites") {
+        apiUrl = favUrl;
       }
     } else {
       apiUrl =
@@ -61,7 +66,9 @@ function MovieList(props) {
 
   const handlepreviousClick = async () => {
     // console.log("previous click");
-    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=22a11be4d14b63a8250c0e0de6d489c4&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
+    let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${
+      props.apiKey
+    }4&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${
       page - 1
     }&with_watch_monetization_types=flatrate`;
     let response = await fetch(apiUrl);

@@ -72,7 +72,7 @@ function Navbar() {
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
-                  href="#"
+                  href="/"
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -111,6 +111,7 @@ function Navbar() {
                       className="dropdown-item"
                       to="/"
                       style={{ color: "white" }}
+                      state={{ type: "Favorites", query: "defualt" }}
                     >
                       Favourites
                     </Link>

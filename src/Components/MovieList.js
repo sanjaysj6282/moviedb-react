@@ -14,14 +14,18 @@ function MovieList(props) {
     `/search/movie?api_key=${props.apiKey}&language=en-US&query=${
       location.state ? location.state.query : ""
     }}&page=1&include_adult=false`;
+  let ratedUrl =
+    iniUrl + `/movie/top_rated?api_key=${props.apiKey}&language=en-US&page=1`;
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
   const moviesList = async () => {
     let apiUrl;
     if (location.state) {
-      if ((location.state.type = "Search")) {
+      if (location.state.type === "Search") {
         apiUrl = searchURl;
+      } else if (location.state.type === "Rated") {
+        apiUrl = ratedUrl;
       }
     } else {
       apiUrl =
